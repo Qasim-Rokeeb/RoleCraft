@@ -4,7 +4,7 @@ import { useState } from 'react';
 import type { Role, Message } from '@/lib/types';
 import { generateResponse } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
-import { Sidebar, SidebarProvider, SidebarInset, SidebarRail, SidebarTrigger } from '@/components/ui/sidebar';
+import { Sidebar, SidebarProvider, SidebarInset, SidebarRail } from '@/components/ui/sidebar';
 import { SidebarNav } from './sidebar-nav';
 import { ChatPanel } from './chat-panel';
 
@@ -69,5 +69,3 @@ export function ChatInterface() {
     </SidebarProvider>
   );
 }
-
-    
