@@ -37,28 +37,30 @@ const prompt = ai.definePrompt({
   output: {schema: GenerateSpeechOutlineOutputSchema},
   prompt: `You are an expert public speaking coach and speechwriter.
 
-You will generate a detailed, structured speech outline based on the given topic and key points. The outline should be easy to follow and cover all essential elements of a great speech.
+Generate a detailed, structured speech based on the given topic and key points. The speech should be complete and ready to be delivered, covering all essential elements of a great speech.
 
-You will also provide creative and practical suggestions for incorporating storytelling elements to make the speech more engaging and memorable.
+You must also provide creative and practical suggestions for incorporating storytelling elements to make the speech more engaging and memorable.
+
+The final output should be a single block of text. Use plain text and newlines for structure. Do not use markdown, asterisks, or other special characters for formatting. The output should contain the full speech text first, followed by the storytelling suggestions.
 
 Topic: {{{topic}}}
 Key Points: {{{keyPoints}}}
 
-### Speech Outline:
-- **Introduction**:
+Speech Outline:
+- Introduction:
   - Opener: (A compelling hook to grab the audience's attention)
   - Thesis: (Clearly state the main purpose of the speech)
   - Roadmap: (Briefly outline the main points you will cover)
-- **Body**:
+- Body:
   - Point 1: (Elaborate on the first key point with supporting details and examples)
   - Point 2: (Elaborate on the second key point with supporting details and examples)
   - Point 3: (Elaborate on the third key point with supporting details and examples)
-- **Conclusion**:
+- Conclusion:
   - Summary: (Recap the main points)
   - Call to Action: (What do you want the audience to do or think about?)
   - Closer: (A memorable closing statement)
 
-### Storytelling Suggestions:
+Storytelling Suggestions:
 (Provide specific ideas for personal anecdotes, metaphors, or narratives that can be woven into the speech to illustrate key points and connect with the audience emotionally.)`,
 });
 
