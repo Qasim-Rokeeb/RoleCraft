@@ -7,8 +7,6 @@ import { useToast } from '@/hooks/use-toast';
 import { Sidebar, SidebarProvider, SidebarInset, SidebarRail, SidebarTrigger } from '@/components/ui/sidebar';
 import { SidebarNav } from './sidebar-nav';
 import { ChatPanel } from './chat-panel';
-import { Button } from '@/components/ui/button';
-import { PanelLeft } from 'lucide-react';
 
 export function ChatInterface() {
   const [role, setRole] = useState<Role>('writer');
@@ -74,3 +72,5 @@ export function ChatInterface() {
     </SidebarProvider>
   );
 }
+
+    

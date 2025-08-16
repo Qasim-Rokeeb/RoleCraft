@@ -8,6 +8,7 @@ import {
   SidebarMenuButton,
   SidebarContent,
   SidebarFooter,
+  SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { Logo } from '@/components/icons/logo';
 import { CodeXml, Megaphone, Mic, PenSquare, Github } from 'lucide-react';
@@ -28,8 +29,9 @@ const roles: { id: Role; name: string; icon: React.ReactNode }[] = [
 export function SidebarNav({ selectedRole, setSelectedRole }: SidebarNavProps) {
   return (
     <>
-      <SidebarHeader>
+      <SidebarHeader className="flex items-center justify-between">
         <Logo />
+        <SidebarTrigger className="md:hidden" />
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
@@ -59,3 +61,5 @@ export function SidebarNav({ selectedRole, setSelectedRole }: SidebarNavProps) {
     </>
   );
 }
+
+    
