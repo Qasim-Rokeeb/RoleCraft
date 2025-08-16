@@ -30,8 +30,8 @@ const roleDetails = {
   speaker: {
     icon: <Mic className="w-16 h-16 text-primary" />,
     title: 'Speaker AI',
-    description: 'Let\'s build a speech. What is the topic you want to talk about?',
-    example: 'e.g., "The importance of public speaking in the modern workplace"',
+    description: 'Let\'s build a speech or business pitch. What is the topic you want to cover?',
+    example: 'e.g., "Seed funding pitch for an AI-powered startup"',
   },
 };
 

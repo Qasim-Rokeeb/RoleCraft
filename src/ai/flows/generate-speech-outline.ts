@@ -12,16 +12,16 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const GenerateSpeechOutlineInputSchema = z.object({
-  topic: z.string().describe('The topic of the speech.'),
-  keyPoints: z.string().describe('The key points to be covered in the speech.'),
+  topic: z.string().describe('The topic of the speech or business pitch.'),
+  keyPoints: z.string().describe('The key points to be covered in the speech or pitch.'),
 });
 export type GenerateSpeechOutlineInput = z.infer<typeof GenerateSpeechOutlineInputSchema>;
 
 const GenerateSpeechOutlineOutputSchema = z.object({
-  outline: z.string().describe('The structured speech outline.'),
+  outline: z.string().describe('The structured speech or pitch outline.'),
   storytellingSuggestions: z
     .string()
-    .describe('Suggestions for incorporating storytelling elements into the speech.'),
+    .describe('Suggestions for incorporating storytelling elements into the speech or pitch.'),
 });
 export type GenerateSpeechOutlineOutput = z.infer<typeof GenerateSpeechOutlineOutputSchema>;
 
@@ -35,33 +35,31 @@ const prompt = ai.definePrompt({
   name: 'generateSpeechOutlinePrompt',
   input: {schema: GenerateSpeechOutlineInputSchema},
   output: {schema: GenerateSpeechOutlineOutputSchema},
-  prompt: `You are an expert public speaking coach and speechwriter.
+  prompt: `You are an expert public speaking coach and pitch strategist.
 
-Generate a detailed, structured speech based on the given topic and key points. The speech should be complete and ready to be delivered, covering all essential elements of a great speech.
+Generate a detailed, structured speech or business pitch based on the given topic and key points. The content should be complete and ready to be delivered, covering all essential elements.
 
-You must also provide creative and practical suggestions for incorporating storytelling elements to make the speech more engaging and memorable.
+If it's a business pitch, include:
+- A compelling hook and a clear problem statement.
+- A concise solution and value proposition.
+- A brief market analysis and business model overview.
+- A strong call to action, such as a request for funding or a partnership.
 
-The final output should be a single block of text. Use plain text and newlines for structure. Do not use markdown, asterisks, or other special characters for formatting. The output should contain the full speech text first, followed by the storytelling suggestions.
+If it's a speech, include:
+- A powerful introduction with a clear thesis.
+- A well-structured body with logical points and supporting examples.
+- A memorable conclusion that summarizes the message and inspires the audience.
+
+You must also provide creative and practical suggestions for incorporating storytelling elements to make the delivery more engaging and memorable.
+
+The final output must be a single block of clean text. Use only plain text and newlines for structure. Do not use markdown, asterisks, or any other special formatting characters. The output should contain the full speech/pitch text first, followed by the storytelling suggestions.
 
 Topic: {{{topic}}}
 Key Points: {{{keyPoints}}}
 
-Speech Outline:
-- Introduction:
-  - Opener: (A compelling hook to grab the audience's attention)
-  - Thesis: (Clearly state the main purpose of the speech)
-  - Roadmap: (Briefly outline the main points you will cover)
-- Body:
-  - Point 1: (Elaborate on the first key point with supporting details and examples)
-  - Point 2: (Elaborate on the second key point with supporting details and examples)
-  - Point 3: (Elaborate on the third key point with supporting details and examples)
-- Conclusion:
-  - Summary: (Recap the main points)
-  - Call to Action: (What do you want the audience to do or think about?)
-  - Closer: (A memorable closing statement)
+Speech/Pitch Outline:
 
-Storytelling Suggestions:
-(Provide specific ideas for personal anecdotes, metaphors, or narratives that can be woven into the speech to illustrate key points and connect with the audience emotionally.)`,
+Storytelling Suggestions:`,
 });
 
 const generateSpeechOutlineFlow = ai.defineFlow(
