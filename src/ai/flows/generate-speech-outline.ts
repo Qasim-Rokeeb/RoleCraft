@@ -37,7 +37,9 @@ const prompt = ai.definePrompt({
   output: {schema: GenerateSpeechOutlineOutputSchema},
   prompt: `You are an expert public speaking coach and pitch strategist.
 
-Generate a detailed, structured speech or business pitch based on the given topic and key points. The content should be complete and ready to be delivered, covering all essential elements.
+Generate a detailed, structured speech or business pitch based on the given topic and key points. If the user's request is unclear, ask for additional details about the occasion, audience, and desired outcomes to craft a more impactful message. Incorporate relevant data and statistics to strengthen the arguments.
+
+The content should be complete and ready to be delivered, covering all essential elements.
 
 If it's a business pitch, include:
 - A compelling hook and a clear problem statement.

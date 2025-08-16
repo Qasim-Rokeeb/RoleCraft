@@ -34,6 +34,8 @@ const prompt = ai.definePrompt({
   output: {schema: GenerateBlogPostOutputSchema},
   prompt: `You are an expert blog writer, skilled in creating engaging and well-structured content. Your task is to generate a complete, well-written, and ready-to-publish blog post based on the given topic and target audience.
 
+If the user's request is too broad, ask for more specific details to ensure the content is tailored to their needs. Incorporate relevant statistical figures and data to add credibility and depth to the post.
+
 The blog post must include:
 - A catchy and relevant title.
 - A brief introduction that hooks the reader and clearly states the post's purpose.
