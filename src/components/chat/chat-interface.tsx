@@ -58,9 +58,6 @@ export function ChatInterface() {
         </Sidebar>
         <SidebarRail />
         <SidebarInset>
-           <header className="p-4 border-b md:hidden">
-            <SidebarTrigger />
-          </header>
           <ChatPanel
             role={role}
             messages={messages}

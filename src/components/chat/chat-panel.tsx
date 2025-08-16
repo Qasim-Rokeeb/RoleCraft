@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { SendHorizonal, LoaderCircle } from 'lucide-react';
 import { ChatMessage } from './chat-message';
 import { useEffect, useRef } from 'react';
+import { SidebarTrigger } from '../ui/sidebar';
 
 interface ChatPanelProps {
   role: Role;
@@ -51,7 +52,11 @@ export function ChatPanel({ role, messages, isLoading, onSendMessage }: ChatPane
 
 
   return (
-    <div className="flex flex-col h-[calc(100dvh-3.5rem)] md:h-dvh bg-background">
+    <div className="flex flex-col h-full bg-background">
+      <header className="p-4 border-b flex items-center gap-4 md:hidden">
+        <SidebarTrigger />
+        <h2 className="text-lg font-semibold">{role.charAt(0).toUpperCase() + role.slice(1)} AI</h2>
+      </header>
       <div className="flex-1 overflow-y-auto">
         <ScrollArea className="h-full" viewportRef={scrollAreaViewport}>
           <div className="p-4 md:p-8">
