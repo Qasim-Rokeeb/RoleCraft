@@ -13,6 +13,7 @@ import { SendHorizonal, LoaderCircle } from 'lucide-react';
 import { ChatMessage } from './chat-message';
 import { useEffect, useRef } from 'react';
 import { SidebarTrigger } from '../ui/sidebar';
+import { useSidebar } from '../ui/sidebar';
 
 interface ChatPanelProps {
   role: Role;
@@ -28,6 +29,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 export function ChatPanel({ role, messages, isLoading, onSendMessage }: ChatPanelProps) {
   const scrollAreaViewport = useRef<HTMLDivElement>(null);
+  const { isMobile } = useSidebar();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -53,10 +55,12 @@ export function ChatPanel({ role, messages, isLoading, onSendMessage }: ChatPane
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <header className="p-4 border-b flex items-center gap-4 md:hidden">
-        <SidebarTrigger />
-        <h2 className="text-lg font-semibold">{role.charAt(0).toUpperCase() + role.slice(1)} AI</h2>
-      </header>
+      {isMobile && (
+        <header className="p-4 border-b flex items-center gap-4">
+          <SidebarTrigger />
+          <h2 className="text-lg font-semibold">{role.charAt(0).toUpperCase() + role.slice(1)} AI</h2>
+        </header>
+      )}
       <div className="flex-1 overflow-y-auto">
         <ScrollArea className="h-full" viewportRef={scrollAreaViewport}>
           <div className="p-4 md:p-8">

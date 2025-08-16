@@ -277,7 +277,6 @@ const SidebarTrigger = React.forwardRef<
           className={cn("h-7 w-7", className)}
           onClick={(event) => {
             onClick?.(event)
-            toggleSidebar()
           }}
           {...props}
         >
@@ -784,5 +783,3 @@ export {
   SidebarTrigger,
   useSidebar,
 }
-
-    
