@@ -4,7 +4,7 @@ import { useState } from 'react';
 import type { Role, Message } from '@/lib/types';
 import { generateResponse } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
-import { Sidebar, SidebarProvider, SidebarInset, SidebarRail } from '@/components/ui/sidebar';
+import { Sidebar, SidebarInset, SidebarRail } from '@/components/ui/sidebar';
 import { SidebarNav } from './sidebar-nav';
 import { ChatPanel } from './chat-panel';
 
@@ -51,21 +51,19 @@ export function ChatInterface() {
   };
 
   return (
-    <SidebarProvider>
-      <div className="relative flex min-h-dvh bg-background">
-        <Sidebar>
-          <SidebarNav selectedRole={role} setSelectedRole={handleRoleChange} />
-        </Sidebar>
-        <SidebarRail />
-        <SidebarInset>
-          <ChatPanel
-            role={role}
-            messages={messages}
-            isLoading={isLoading}
-            onSendMessage={handleSendMessage}
-          />
-        </SidebarInset>
-      </div>
-    </SidebarProvider>
+    <div className="relative flex min-h-dvh bg-background">
+      <Sidebar>
+        <SidebarNav selectedRole={role} setSelectedRole={handleRoleChange} />
+      </Sidebar>
+      <SidebarRail />
+      <SidebarInset>
+        <ChatPanel
+          role={role}
+          messages={messages}
+          isLoading={isLoading}
+          onSendMessage={handleSendMessage}
+        />
+      </SidebarInset>
+    </div>
   );
 }

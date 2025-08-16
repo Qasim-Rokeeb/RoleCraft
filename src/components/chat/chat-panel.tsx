@@ -9,7 +9,7 @@ import * as z from 'zod';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { SendHorizonal, LoaderCircle, PanelLeft } from 'lucide-react';
+import { SendHorizonal, LoaderCircle } from 'lucide-react';
 import { ChatMessage } from './chat-message';
 import { useEffect, useRef } from 'react';
 import { SidebarTrigger } from '../ui/sidebar';
