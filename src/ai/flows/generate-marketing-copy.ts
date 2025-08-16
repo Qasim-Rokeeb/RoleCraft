@@ -43,7 +43,7 @@ const prompt = ai.definePrompt({
   output: {schema: GenerateMarketingCopyOutputSchema},
   prompt: `You are an expert marketing strategist and copywriter. Based on the product description, generate a complete and actionable marketing plan.
 
-If the user's request is vague, ask for more specific details about the product, its features, and the target market to create a more effective plan. Use statistical data and market trends to support your strategic recommendations.
+Before generating the copy, if the product description is vague, you MUST ask for more specific details about the product, its key features, unique selling points, and the target market. Use statistical data and market trends to support your strategic recommendations.
 
 Your plan must include:
 - A powerful, attention-grabbing headline.

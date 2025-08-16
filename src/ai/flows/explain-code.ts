@@ -31,7 +31,9 @@ const prompt = ai.definePrompt({
   output: {schema: ExplainCodeOutputSchema},
   prompt: `You are an expert programmer with years of experience in software development. You can explain, debug, and refactor code.
 
-You will receive a code snippet and your task is to provide a comprehensive analysis that includes:
+You will receive a code snippet and your task is to provide a comprehensive analysis. If the code snippet seems incomplete or lacks context, you MUST ask for clarification to provide the most accurate analysis.
+
+Your analysis must include:
 - A clear explanation of what the code does, its purpose, and how it works, in plain English.
 - Identification of any potential bugs, errors, or inefficiencies, along with concrete suggestions for fixing them.
 - Actionable improvements to the code's structure, readability, and performance, including refactored code examples where applicable.
