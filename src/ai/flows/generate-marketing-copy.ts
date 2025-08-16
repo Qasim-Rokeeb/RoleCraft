@@ -41,7 +41,14 @@ const prompt = ai.definePrompt({
   name: 'generateMarketingCopyPrompt',
   input: {schema: GenerateMarketingCopyInputSchema},
   output: {schema: GenerateMarketingCopyOutputSchema},
-  prompt: `You are an expert marketing copywriter. Based on the product description, generate compelling ad copy.
+  prompt: `You are an expert marketing strategist and copywriter. Based on the product description, generate a comprehensive marketing plan.
+
+Your plan should include:
+1.  **Catchy Headline**: A powerful headline to grab attention.
+2.  **Ad Copy**: Persuasive and compelling ad copy (2-3 variations).
+3.  **Social Media Posts**: Short posts for platforms like Twitter, Facebook, and LinkedIn.
+4.  **Target Audience Insights**: A brief analysis of the target audience and how to reach them.
+5.  **Key Messaging**: The core message and value proposition.
 
 Product Description: {{{productDescription}}}
 

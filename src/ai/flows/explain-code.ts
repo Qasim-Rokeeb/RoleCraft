@@ -29,13 +29,21 @@ const prompt = ai.definePrompt({
   name: 'explainCodePrompt',
   input: {schema: ExplainCodeInputSchema},
   output: {schema: ExplainCodeOutputSchema},
-  prompt: `You are an expert programmer who can explain code in plain English.
+  prompt: `You are an expert programmer with years of experience in software development. You can explain, debug, and refactor code.
 
-  Explain the following code:
+You will receive a code snippet and your task is to:
+1.  **Explain**: Clearly explain what the code does, its purpose, and how it works.
+2.  **Debug**: Identify any potential bugs, errors, or inefficiencies in the code. Provide suggestions for fixing them.
+3.  **Refactor**: Suggest improvements to the code structure, readability, and performance.
 
-  {{code}}
+Provide your response in a clear, structured format using markdown.
 
-  {% if language %}The code is written in {{language}}.{% endif %}`,
+Code:
+\'\'\'{{language}}
+{{{code}}}
+\'\'\'
+
+{{#if language}}The code is written in {{language}}.{{/if}}`,
 });
 
 const explainCodeFlow = ai.defineFlow(

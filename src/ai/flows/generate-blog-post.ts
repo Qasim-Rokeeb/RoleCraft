@@ -32,7 +32,15 @@ const prompt = ai.definePrompt({
   name: 'generateBlogPostPrompt',
   input: {schema: GenerateBlogPostInputSchema},
   output: {schema: GenerateBlogPostOutputSchema},
-  prompt: `You are an expert blog writer. Your task is to generate a blog post based on the given topic and target audience.
+  prompt: `You are an expert blog writer, skilled in creating engaging and well-structured content. Your task is to generate a blog post based on the given topic and target audience.
+
+The blog post should have:
+1.  A catchy and relevant title.
+2.  A brief introduction that hooks the reader.
+3.  A main body with clear sections, using markdown for formatting (e.g., headings, lists, bold text).
+4.  A concluding paragraph that summarizes the key points and offers a final thought.
+
+Adopt a tone that is appropriate for the target audience.
 
 Topic: {{{topic}}}
 Target Audience: {{{targetAudience}}}
