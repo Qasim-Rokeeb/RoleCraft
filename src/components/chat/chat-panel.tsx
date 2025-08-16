@@ -26,7 +26,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export function ChatPanel({ role, messages, isLoading, onSendMessage }: ChatPanelProps) {
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const scrollAreaViewport = useRef<HTMLDivElement>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -41,9 +41,9 @@ export function ChatPanel({ role, messages, isLoading, onSendMessage }: ChatPane
   };
 
   useEffect(() => {
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTo({
-        top: scrollAreaRef.current.scrollHeight,
+    if (scrollAreaViewport.current) {
+      scrollAreaViewport.current.scrollTo({
+        top: scrollAreaViewport.current.scrollHeight,
         behavior: 'smooth',
       });
     }
@@ -51,9 +51,9 @@ export function ChatPanel({ role, messages, isLoading, onSendMessage }: ChatPane
 
 
   return (
-    <div className="flex flex-col h-dvh bg-background">
+    <div className="flex flex-col h-[calc(100dvh-3.5rem)] md:h-dvh bg-background">
       <div className="flex-1 overflow-y-auto">
-        <ScrollArea className="h-full" ref={scrollAreaRef}>
+        <ScrollArea className="h-full" viewportRef={scrollAreaViewport}>
           <div className="p-4 md:p-8">
             {messages.length === 0 ? (
               <EmptyChat role={role} />

@@ -4,9 +4,11 @@ import { useState } from 'react';
 import type { Role, Message } from '@/lib/types';
 import { generateResponse } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
-import { Sidebar, SidebarProvider, SidebarInset, SidebarRail } from '@/components/ui/sidebar';
+import { Sidebar, SidebarProvider, SidebarInset, SidebarRail, SidebarTrigger } from '@/components/ui/sidebar';
 import { SidebarNav } from './sidebar-nav';
 import { ChatPanel } from './chat-panel';
+import { Button } from '@/components/ui/button';
+import { PanelLeft } from 'lucide-react';
 
 export function ChatInterface() {
   const [role, setRole] = useState<Role>('writer');
@@ -58,6 +60,9 @@ export function ChatInterface() {
         </Sidebar>
         <SidebarRail />
         <SidebarInset>
+           <header className="p-4 border-b md:hidden">
+            <SidebarTrigger />
+          </header>
           <ChatPanel
             role={role}
             messages={messages}
