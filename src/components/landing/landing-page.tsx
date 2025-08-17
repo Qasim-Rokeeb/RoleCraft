@@ -225,7 +225,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="testimonials" className="py-12 md:py-24 bg-secondary overflow-hidden">
+        <section id="testimonials" className="py-12 md:py-24 bg-secondary">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-bold font-headline animate-fade-in-up">
@@ -236,7 +236,7 @@ export function LandingPage() {
                 say.
               </p>
             </div>
-            <div className="mt-12">
+            <div className="mt-12 overflow-hidden">
               <Carousel
                 plugins={[plugin.current]}
                 className="w-full"
