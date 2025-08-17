@@ -88,7 +88,7 @@ const testimonials = [
 
 export function LandingPage() {
   return (
-    <div className="flex flex-col min-h-dvh bg-background">
+    <div className="flex flex-col min-h-dvh bg-background animate-fade-in">
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
         <Logo />
         <Button asChild>
@@ -98,18 +98,20 @@ export function LandingPage() {
 
       <main className="flex-1">
         <section className="py-12 md:py-24 lg:py-32 text-center container mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-headline tracking-tighter">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-headline tracking-tighter animate-fade-in-up animation-delay-200">
             Unlock Your Potential with Multi-Role AI
           </h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground animate-fade-in-up animation-delay-400">
             RoleCraft AI isn't just another chatbot. It's a suite of specialized AI assistants designed for marketers, programmers, writers, and public speakers. Stop wrestling with generic AI and get expert-level help, instantly.
           </p>
-          <Button asChild size="lg" className="mt-8">
-            <Link href="/chat">
-              Start Chatting for Free <ArrowRight className="ml-2" />
-            </Link>
-          </Button>
-          <div className="mt-12 relative">
+          <div className="animate-fade-in-up animation-delay-600">
+            <Button asChild size="lg" className="mt-8">
+              <Link href="/chat">
+                Start Chatting for Free <ArrowRight className="ml-2" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-12 relative animate-fade-in-up animation-delay-800">
             <Image
               src="https://placehold.co/1200x600.png"
               alt="AI Chat Interface Screenshot"
@@ -125,24 +127,26 @@ export function LandingPage() {
         <section id="features" className="py-12 md:py-24 bg-secondary">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-bold font-headline">
+              <h2 className="text-3xl md:text-4xl font-bold font-headline animate-fade-in-up">
                 An Expert for Every Task
               </h2>
-              <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
                 No more prompt engineering. Just switch between specialized AI roles to get the best results for your specific needs.
               </p>
             </div>
             <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {featureCards.map((feature, index) => (
-                <Card key={index} className="text-center flex flex-col">
-                  <CardHeader>
-                    <div className="flex justify-center mb-4">{feature.icon}</div>
-                    <CardTitle>{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
+                <div key={index} className="animate-fade-in-up" style={{ animationDelay: `${200 * (index + 2)}ms`}}>
+                  <Card className="text-center flex flex-col h-full">
+                    <CardHeader>
+                      <div className="flex justify-center mb-4">{feature.icon}</div>
+                      <CardTitle>{feature.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-1">
+                      <p className="text-muted-foreground">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                </div>
               ))}
             </div>
           </div>
@@ -151,16 +155,16 @@ export function LandingPage() {
         <section id="how-it-works" className="py-12 md:py-24">
            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-bold font-headline">
+              <h2 className="text-3xl md:text-4xl font-bold font-headline animate-fade-in-up">
                 Get Started in Seconds
               </h2>
-              <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
                 Our intuitive interface makes it easy to get the results you need.
               </p>
             </div>
             <div className="mt-12 grid gap-8 md:grid-cols-3">
-              {howItWorksSteps.map((step) => (
-                <div key={step.title} className="text-center">
+              {howItWorksSteps.map((step, index) => (
+                <div key={step.title} className="text-center animate-fade-in-up" style={{ animationDelay: `${200 * (index + 2)}ms`}}>
                   <div className="flex justify-center mb-4">
                     <div className="bg-primary/10 p-4 rounded-full">
                       {step.icon}
@@ -177,47 +181,51 @@ export function LandingPage() {
         <section id="testimonials" className="py-12 md:py-24 bg-secondary">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">
+                <h2 className="text-3xl md:text-4xl font-bold font-headline animate-fade-in-up">
                   Loved by Professionals Worldwide
                 </h2>
-                <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto">
+                <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
                   Don't just take our word for it. Here's what our users have to say.
                 </p>
             </div>
             <div className="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-3">
               {testimonials.map((testimonial, index) => (
-                <Card key={index} className="flex flex-col justify-between">
-                  <CardContent className="pt-6">
-                    <p className="text-card-foreground">"{testimonial.text}"</p>
-                  </CardContent>
-                  <CardHeader className="flex-row items-center gap-4">
-                    <Avatar>
-                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.dataAiHint} />
-                      <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <CardTitle className="text-base">{testimonial.name}</CardTitle>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                    </div>
-                  </CardHeader>
-                </Card>
+                <div key={index} className="animate-fade-in-up" style={{ animationDelay: `${200 * (index + 2)}ms`}}>
+                  <Card className="flex flex-col justify-between h-full">
+                    <CardContent className="pt-6">
+                      <p className="text-card-foreground">"{testimonial.text}"</p>
+                    </CardContent>
+                    <CardHeader className="flex-row items-center gap-4">
+                      <Avatar>
+                        <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.dataAiHint} />
+                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <CardTitle className="text-base">{testimonial.name}</CardTitle>
+                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                      </div>
+                    </CardHeader>
+                  </Card>
+                </div>
               ))}
             </div>
           </div>
         </section>
         
         <section className="py-12 md:py-24 text-center container mx-auto px-4 sm:px-6 lg:px-8">
-           <h2 className="text-3xl md:text-4xl font-bold font-headline">
+           <h2 className="text-3xl md:text-4xl font-bold font-headline animate-fade-in-up">
             Ready to Boost Your Productivity?
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground animate-fade-in-up animation-delay-200">
             Stop switching between apps. Start getting expert-level results from a single, powerful AI assistant.
           </p>
-          <Button asChild size="lg" className="mt-8">
-            <Link href="/chat">
-              Try RoleCraft AI Now <ArrowRight className="ml-2" />
-            </Link>
-          </Button>
+          <div className="animate-fade-in-up animation-delay-400">
+            <Button asChild size="lg" className="mt-8">
+              <Link href="/chat">
+                Try RoleCraft AI Now <ArrowRight className="ml-2" />
+              </Link>
+            </Button>
+          </div>
         </section>
 
       </main>
