@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -22,9 +21,12 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import { Logo } from '@/components/icons/logo';
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import React from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useRef } from 'react';
 
+/* ------------------------------------------------------------------ */
+/* Data                                                               */
+/* ------------------------------------------------------------------ */
 const featureCards = [
   {
     icon: <PenSquare className="w-8 h-8 text-primary" />,
@@ -36,19 +38,19 @@ const featureCards = [
     icon: <Megaphone className="w-8 h-8 text-primary" />,
     title: 'Marketing Pro',
     description:
-      'Craft compelling ad copy, social media posts, and complete marketing strategies that resonate with your target audience.',
+      'Craft compelling ad copy, social-media posts, and complete marketing strategies that resonate with your audience.',
   },
   {
     icon: <CodeXml className="w-8 h-8 text-primary" />,
     title: 'Code Assistant',
     description:
-      'Get help explaining, debugging, and refactoring your code. Paste any snippet and receive a detailed analysis and actionable improvements.',
+      'Explain, debug, and refactor any snippet. Get instant, senior-level feedback with actionable improvements.',
   },
   {
     icon: <Mic className="w-8 h-8 text-primary" />,
     title: 'Speech Coach',
     description:
-      'Prepare structured, impactful outlines for speeches and business pitches. Conquer the stage with a clear, persuasive message.',
+      'Prepare structured, persuasive outlines for speeches and business pitches. Own the stage with clarity.',
   },
 ];
 
@@ -57,19 +59,19 @@ const howItWorksSteps = [
     icon: <MousePointerClick className="w-8 h-8 text-primary" />,
     title: '1. Select a Role',
     description:
-      'Choose the specialized AI assistant that fits your task, from a writer to a programmer.',
+      'Choose the specialized AI assistant that fits your task—writer, marketer, coder or speaker.',
   },
   {
     icon: <BotMessageSquare className="w-8 h-8 text-primary" />,
     title: '2. Describe Your Task',
     description:
-      'Provide your instructions, topic, or code. The more detail you give, the better the result.',
+      'Tell the AI what you need. The more detail you give, the better the result.',
   },
   {
     icon: <Sparkles className="w-8 h-8 text-primary" />,
     title: '3. Get Expert Results',
     description:
-      'The AI gets to work and delivers a high-quality, ready-to-use response in seconds.',
+      'Receive a polished, ready-to-use response in seconds—no prompt engineering required.',
   },
 ];
 
@@ -77,46 +79,48 @@ const testimonials = [
   {
     name: 'Sarah L.',
     role: 'Content Marketer',
-    avatar: 'https://placehold.co/100x100.png',
-    dataAiHint: 'woman portrait',
-    text: "RoleCraft AI has become my go-to for breaking writer's block. The Writer AI helps me generate blog outlines and drafts in minutes. It's a huge time-saver!",
+    avatar: 'https://i.pravatar.cc/100?u=sarah',
+    text: "RoleCraft AI has become my go-to for breaking writer's block. I can generate outlines and drafts in minutes—huge time-saver!",
   },
   {
     name: 'Mike P.',
     role: 'Software Developer',
-    avatar: 'https://placehold.co/100x100.png',
-    dataAiHint: 'man portrait',
-    text: "The Programmer AI is surprisingly good at catching subtle bugs and suggesting refactors. It's like having a senior developer available 24/7 for a second opinion.",
+    avatar: 'https://i.pravatar.cc/100?u=mike',
+    text: 'The Code Assistant catches subtle bugs and suggests refactors like a senior dev available 24/7.',
   },
   {
     name: 'Jessica T.',
     role: 'Startup Founder',
-    avatar: 'https://placehold.co/100x100.png',
-    dataAiHint: 'woman smiling',
-    text: 'As a founder, I wear many hats. The Speaker AI helped me structure my seed round pitch deck, and the Marketer AI crafts all my social media updates. Invaluable!',
+    avatar: 'https://i.pravatar.cc/100?u=jessica',
+    text: 'I used the Speaker AI to craft my seed-round pitch and the Marketer AI for all our social updates—invaluable!',
   },
   {
     name: 'David H.',
-    role: 'Digital Agency Owner',
-    avatar: 'https://placehold.co/100x100.png',
-    dataAiHint: 'man professional',
-    text: 'We use RoleCraft to quickly generate copy variations for A/B testing. The Marketer AI is fantastic for this, saving us hours of work each week.',
+    role: 'Agency Owner',
+    avatar: 'https://i.pravatar.cc/100?u=david',
+    text: 'We generate copy variations for A/B tests in seconds. Our campaigns have never been more efficient.',
   },
   {
     name: 'Emily R.',
-    role: 'Student',
-    avatar: 'https://placehold.co/100x100.png',
-    dataAiHint: 'woman student',
-    text: 'The Programmer AI helped me understand complex algorithms for my computer science classes. The explanations are so clear and easy to follow.',
+    role: 'CS Student',
+    avatar: 'https://i.pravatar.cc/100?u=emily',
+    text: 'The explanations are crystal-clear. It helped me nail the algorithms for my final project.',
   },
 ];
 
-export function LandingPage() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+/* ------------------------------------------------------------------ */
+/* Page                                                               */
+/* ------------------------------------------------------------------ */
+export default function LandingPage() {
+  const autoplay = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
   );
+
   return (
-    <div className="flex flex-col min-h-dvh bg-background animate-fade-in">
+    <div className="flex flex-col min-h-dvh bg-background overflow-x-hidden">
+      {/* -------------------------------------------------------------- */
+      /* Header                                                         */
+      /* -------------------------------------------------------------- */}
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
         <Logo />
         <Button asChild>
@@ -125,163 +129,142 @@ export function LandingPage() {
       </header>
 
       <main className="flex-1">
+        {/* ---------------------------------------------------------- */
+        /* Hero                                                       */
+        /* ---------------------------------------------------------- */}
         <section className="py-12 md:py-24 lg:py-32 text-center container mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-headline tracking-tighter animate-fade-in-up animation-delay-200">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
             Unlock Your Potential with Multi-Role AI
           </h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground animate-fade-in-up animation-delay-400">
-            RoleCraft AI isn't just another chatbot. It's a suite of
-            specialized AI assistants designed for marketers, programmers,
-            writers, and public speakers. Stop wrestling with generic AI and get
-            expert-level help, instantly.
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+            RoleCraft AI isn’t just another chatbot. It’s a suite of specialized
+            assistants for marketers, programmers, writers, and speakers—ready
+            to help instantly.
           </p>
-          <div className="animate-fade-in-up animation-delay-600">
-            <Button asChild size="lg" className="mt-8">
-              <Link href="/chat">
-                Start Chatting for Free <ArrowRight className="ml-2" />
-              </Link>
-            </Button>
-          </div>
-          <div className="mt-12 relative animate-fade-in-up animation-delay-800">
+          <Button asChild size="lg" className="mt-8">
+            <Link href="/chat">
+              Start Chatting for Free <ArrowRight className="ml-2" />
+            </Link>
+          </Button>
+
+          <div className="mt-12">
             <Image
-              src="https://placehold.co/1200x600.png"
-              alt="AI Chat Interface Screenshot"
+              src="https://placehold.co/1200x600/0f172a/e2e8f0?text=AI+Chat+Interface"
+              alt="AI Chat Interface"
               width={1200}
               height={600}
-              className="rounded-xl shadow-2xl ring-1 ring-border"
-              data-ai-hint="dashboard computer"
+              className="rounded-xl shadow-2xl ring-1 ring-border max-w-full"
               priority
             />
           </div>
         </section>
 
-        <section id="features" className="py-12 md:py-24 bg-secondary">
+        {/* ---------------------------------------------------------- */
+        /* Features                                                   */
+        /* ---------------------------------------------------------- */}
+        <section id="features" className="py-12 md:py-24 bg-secondary/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-bold font-headline animate-fade-in-up">
+              <h2 className="text-3xl md:text-4xl font-bold">
                 An Expert for Every Task
               </h2>
-              <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-                No more prompt engineering. Just switch between specialized AI
-                roles to get the best results for your specific needs.
+              <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto">
+                Skip the prompt engineering—switch between specialized AI roles
+                and get expert-level results.
               </p>
             </div>
+
             <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-              {featureCards.map((feature, index) => (
-                <div
-                  key={index}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${200 * (index + 2)}ms` }}
-                >
-                  <Card className="text-center flex flex-col h-full">
-                    <CardHeader>
-                      <div className="flex justify-center mb-4">
-                        {feature.icon}
-                      </div>
-                      <CardTitle>{feature.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex-1">
-                      <p className="text-muted-foreground">
-                        {feature.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
+              {featureCards.map((f, i) => (
+                <Card key={i} className="text-center flex flex-col">
+                  <CardHeader>
+                    <div className="flex justify-center mb-4">{f.icon}</div>
+                    <CardTitle>{f.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1">
+                    <p className="text-muted-foreground">{f.description}</p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
         </section>
 
+        {/* ---------------------------------------------------------- */
+        /* How it works                                               */
+        /* ---------------------------------------------------------- */}
         <section id="how-it-works" className="py-12 md:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-bold font-headline animate-fade-in-up">
+              <h2 className="text-3xl md:text-4xl font-bold">
                 Get Started in Seconds
               </h2>
-              <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-                Our intuitive interface makes it easy to get the results you
-                need.
+              <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto">
+                Three simple steps to expert-level output.
               </p>
             </div>
+
             <div className="mt-12 grid gap-8 md:grid-cols-3">
-              {howItWorksSteps.map((step, index) => (
-                <div
-                  key={step.title}
-                  className="text-center animate-fade-in-up"
-                  style={{ animationDelay: `${200 * (index + 2)}ms` }}
-                >
+              {howItWorksSteps.map((s, i) => (
+                <div key={i} className="text-center">
                   <div className="flex justify-center mb-4">
                     <div className="bg-primary/10 p-4 rounded-full">
-                      {step.icon}
+                      {s.icon}
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold">{step.title}</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    {step.description}
-                  </p>
+                  <h3 className="text-xl font-bold">{s.title}</h3>
+                  <p className="mt-2 text-muted-foreground">{s.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="testimonials" className="py-12 md:py-24 bg-secondary">
+        {/* ---------------------------------------------------------- */
+        /* Testimonials                                               */
+        /* ---------------------------------------------------------- */}
+        <section id="testimonials" className="py-12 md:py-24 bg-secondary/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-bold font-headline animate-fade-in-up">
+              <h2 className="text-3xl md:text-4xl font-bold">
                 Loved by Professionals Worldwide
               </h2>
-              <p className="mt-2 text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-                Don't just take our word for it. Here's what our users have to
-                say.
-              </p>
             </div>
-            <div className="mt-12 overflow-hidden">
+
+            <div className="mt-12">
               <Carousel
-                plugins={[plugin.current]}
-                className="w-full"
-                onMouseEnter={plugin.current.stop}
-                onMouseLeave={plugin.current.reset}
-                opts={{
-                  align: 'start',
-                  loop: true,
-                }}
+                plugins={[autoplay.current]}
+                onMouseEnter={autoplay.current.stop}
+                onMouseLeave={autoplay.current.reset}
+                opts={{ align: 'start', loop: true }}
               >
                 <CarouselContent>
-                  {testimonials.map((testimonial, index) => (
+                  {testimonials.map((t, i) => (
                     <CarouselItem
-                      key={index}
-                      className="md:basis-1/2 lg:basis-1/3"
+                      key={i}
+                      className="md:basis-1/2 lg:basis-1/3 p-2"
                     >
-                      <div className="p-1 animate-fade-in-up" style={{ animationDelay: `${100 * (index + 2)}ms`}}>
-                        <Card className="flex flex-col justify-between h-full">
-                          <CardContent className="pt-6">
-                            <p className="text-card-foreground">
-                              "{testimonial.text}"
+                      <Card className="flex flex-col h-full">
+                        <CardContent className="pt-6">
+                          <p className="text-card-foreground">
+                            &ldquo;{t.text}&rdquo;
+                          </p>
+                        </CardContent>
+                        <CardHeader className="flex-row items-center gap-4">
+                          <Avatar>
+                            <AvatarImage src={t.avatar} alt={t.name} />
+                            <AvatarFallback>{t.name.charAt(0)}</AvatarFallback>
+                          </Avatar>
+                          <div>
+                            <CardTitle className="text-base">
+                              {t.name}
+                            </CardTitle>
+                            <p className="text-sm text-muted-foreground">
+                              {t.role}
                             </p>
-                          </CardContent>
-                          <CardHeader className="flex-row items-center gap-4">
-                            <Avatar>
-                              <AvatarImage
-                                src={testimonial.avatar}
-                                alt={testimonial.name}
-                                data-ai-hint={testimonial.dataAiHint}
-                              />
-                              <AvatarFallback>
-                                {testimonial.name.charAt(0)}
-                              </AvatarFallback>
-                            </Avatar>
-                            <div>
-                              <CardTitle className="text-base">
-                                {testimonial.name}
-                              </CardTitle>
-                              <p className="text-sm text-muted-foreground">
-                                {testimonial.role}
-                              </p>
-                            </div>
-                          </CardHeader>
-                        </Card>
-                      </div>
+                          </div>
+                        </CardHeader>
+                      </Card>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
@@ -290,27 +273,31 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section className="py-12 md:py-24 text-center container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline animate-fade-in-up">
+        {/* ---------------------------------------------------------- */
+        /* CTA                                                        */
+        /* ---------------------------------------------------------- */}
+        <section className="py-12 md:py-24 text-center container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold">
             Ready to Boost Your Productivity?
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground animate-fade-in-up animation-delay-200">
-            Stop switching between apps. Start getting expert-level results from
-            a single, powerful AI assistant.
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+            Stop switching between apps. Get expert-level results from one
+            powerful AI assistant.
           </p>
-          <div className="animate-fade-in-up animation-delay-400">
-            <Button asChild size="lg" className="mt-8">
-              <Link href="/chat">
-                Try RoleCraft AI Now <ArrowRight className="ml-2" />
-              </Link>
-            </Button>
-          </div>
+          <Button asChild size="lg" className="mt-8">
+            <Link href="/chat">
+              Try RoleCraft AI Now <ArrowRight className="ml-2" />
+            </Link>
+          </Button>
         </section>
       </main>
 
+      {/* -------------------------------------------------------------- */
+      /* Footer                                                         */
+      /* -------------------------------------------------------------- */}
       <footer className="py-6 bg-background border-t">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} RoleCraft AI. All rights reserved.</p>
+        <div className="container mx-auto text-center text-sm text-muted-foreground">
+          &copy; {new Date().getFullYear()} RoleCraft AI. All rights reserved.
         </div>
       </footer>
     </div>
