@@ -98,7 +98,7 @@ const testimonials = [
     name: 'David H.',
     role: 'Agency Owner',
     avatar: 'https://i.pravatar.cc/100?u=david',
-    text: 'We generate copy variations for A/B tests in seconds. Our campaigns have never been more efficient.',
+    text: 'We generate copy variations for A/B tests in seconds. Our campaigns have never been more efficient, all thanks to RoleCraft AI.',
   },
   {
     name: 'Emily R.',

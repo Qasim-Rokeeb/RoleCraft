@@ -65,7 +65,6 @@ npm run dev
 
 ## 🔮 Future Plans
 
-* 🌍 Multi-language support
 * 🧑‍💼 More roles (e.g., Lawyer AI, Teacher AI, Consultant AI)
 * 🎥 AI avatars for presentation practice
 * 📊 Analytics dashboard for marketers & businesses
